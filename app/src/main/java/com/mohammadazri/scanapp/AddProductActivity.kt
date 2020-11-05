@@ -28,8 +28,7 @@ class AddProductActivity : AppCompatActivity() {
     private var productCode:TextView?=null
     private var productExpireDate: EditText? = null
     private var addProductButton: Button? = null
-
-
+    
     private var firebaseDatabase: DatabaseReference? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
