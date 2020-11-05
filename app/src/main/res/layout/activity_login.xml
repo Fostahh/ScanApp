@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    tools:context=".LoginActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#B3000000"
+        android:orientation="vertical">
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/login_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="80dp"
+        android:text="Login"
+        android:textColor="@android:color/white"
+        android:textSize="30sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_margin="5dp"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/user_email_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_margin="5dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@android:color/white"
+            android:ems="10"
+            android:hint="Enter your email"
+            android:inputType="textEmailAddress"
+            android:padding="15dp"
+            android:textColor="@android:color/black"
+            android:textColorHint="@android:color/black" />
+
+        <EditText
+            android:id="@+id/user_password_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_margin="5dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@android:color/white"
+            android:ems="10"
+            android:hint="Enter your password"
+            android:inputType="textPassword"
+            android:padding="15dp"
+            android:textColor="@android:color/black"
+            android:textColorHint="@android:color/black" />
+
+        <TextView
+            android:id="@+id/resetPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="Forgot password?"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            android:onClick="resetPassword"
+            android:clickable="true"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/signUpLoginPage_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@android:color/holo_blue_dark"
+            android:text="Sign Up"
+            android:onClick="goToSignUpPage"
+            android:textColor="@android:color/black" />
+
+        <Button
+            android:id="@+id/loginPage_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@android:color/white"
+            android:text="Login"
+            android:textColor="@android:color/black" />
+
+    </LinearLayout>
+
+</RelativeLayout>
