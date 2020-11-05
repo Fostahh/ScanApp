@@ -37,7 +37,6 @@ class CheckProductActivity : AppCompatActivity() {
         productCode?.visibility = View.GONE
         productName?.visibility = View.GONE
         productExpireDate?.visibility = View.GONE
-        addProductButton?.visibility = View.GONE
 
         setupPermissions()
         codeScanner()
@@ -91,7 +90,6 @@ class CheckProductActivity : AppCompatActivity() {
                     productCode?.visibility = View.VISIBLE
                     productName?.visibility = View.VISIBLE
                     productExpireDate?.visibility = View.VISIBLE
-                    addProductButton?.visibility = View.VISIBLE
                 }
             }
         })
