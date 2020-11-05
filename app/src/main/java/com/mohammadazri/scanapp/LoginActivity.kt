@@ -44,7 +44,6 @@ class LoginActivity : AppCompatActivity() {
         } else if (TextUtils.isEmpty(password)) {
             Toast.makeText(applicationContext,"This field cannot be empty!", Toast.LENGTH_SHORT).show()
         } else {
-
             firebaseAuth?.signInWithEmailAndPassword(email,password)?.addOnCompleteListener(object:
                 OnCompleteListener<AuthResult> {
                 override fun onComplete(task: Task<AuthResult>) {
