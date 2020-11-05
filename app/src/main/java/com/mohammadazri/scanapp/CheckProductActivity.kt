@@ -17,6 +17,7 @@ import com.google.firebase.database.*
 class CheckProductActivity : AppCompatActivity() {
 
     private val cameraRequestCode = 101
+    
     private var codeScanner:CodeScanner?=null
     private var scannerView:CodeScannerView?=null
     private var productCode:TextView?=null
