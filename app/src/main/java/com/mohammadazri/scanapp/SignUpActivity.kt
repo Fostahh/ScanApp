@@ -17,7 +17,6 @@ import com.google.firebase.auth.FirebaseUser
 class SignUpActivity : AppCompatActivity() {
 
     private var signUp: Button?= null
-    private var login:Button?= null
     private var userEmail: EditText?=null
     private var userPassword:EditText?=null
     private var firebaseAuth: FirebaseAuth?=null
@@ -27,7 +26,6 @@ class SignUpActivity : AppCompatActivity() {
         setContentView(R.layout.activity_sign_up)
 
         signUp = findViewById(R.id.signUp_btn)
-        login = findViewById(R.id.login_btn)
         userEmail = findViewById(R.id.user_email)
         userPassword = findViewById(R.id.user_password)
         firebaseAuth = FirebaseAuth.getInstance()
@@ -35,7 +33,6 @@ class SignUpActivity : AppCompatActivity() {
         signUp?.setOnClickListener {
             registerAccount()
         }
-
     }
 
     fun goToLoginPage(view: View) {
