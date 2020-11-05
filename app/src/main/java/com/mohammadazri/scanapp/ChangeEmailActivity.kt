@@ -20,7 +20,7 @@ class ChangeEmailActivity : AppCompatActivity() {
     private var newEmail:EditText?=null
     private var updateButton:Button?=null
     private var firebaseAuth:FirebaseAuth?=null
-    private var user:FirebaseUser?=null
+    private var firebaseUser:FirebaseUser?=null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,7 +31,7 @@ class ChangeEmailActivity : AppCompatActivity() {
         newEmail = findViewById(R.id.new_user_email_changePage)
         updateButton = findViewById(R.id.update_btn)
         firebaseAuth = FirebaseAuth.getInstance()
-        user = firebaseAuth?.currentUser
+        firebaseUser = firebaseAuth?.currentUser
 
         updateButton?.setOnClickListener {
             updateEmail()
@@ -52,9 +52,9 @@ class ChangeEmailActivity : AppCompatActivity() {
         } else {
             val userInfo = EmailAuthProvider.getCredential(emailText,passwordText)
 
-            user?.reauthenticate(userInfo)?.addOnCompleteListener(object:OnCompleteListener<Void>{
+            firebaseUser?.reauthenticate(userInfo)?.addOnCompleteListener(object:OnCompleteListener<Void>{
                 override fun onComplete(task: Task<Void>) {
-                    user!!.updateEmail(newEmailText).addOnCompleteListener(object:OnCompleteListener<Void>{
+                    firebaseUser!!.updateEmail(newEmailText).addOnCompleteListener(object:OnCompleteListener<Void>{
                         override fun onComplete(task: Task<Void>) {
                             if(task.isSuccessful) {
                                 Toast.makeText(applicationContext, "Update Successful", Toast.LENGTH_SHORT).show()
