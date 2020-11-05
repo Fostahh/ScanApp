@@ -71,8 +71,8 @@ class UserProfileActivity : AppCompatActivity() {
     }
 
     private fun setImageProfile() {
-        var profileImage = storageReference!!.child("users/"+ firebaseUser!!.getUid()+"/profile.jpg")
-        profileImage?.getDownloadUrl()?.addOnSuccessListener(object: OnSuccessListener<Uri> {
+        val profileImage = storageReference!!.child("users/"+ firebaseUser!!.getUid()+"/profile.jpg")
+        profileImage.getDownloadUrl().addOnSuccessListener(object: OnSuccessListener<Uri> {
             override fun onSuccess(uri: Uri?) {
                 Picasso.get().load(uri).into(userPicture)
             }
