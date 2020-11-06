@@ -14,7 +14,7 @@ import com.google.firebase.auth.FirebaseAuth
 
 class ResetPasswordActivity : AppCompatActivity() {
 
-    private var userEmail:EditText?=null
+    private var userEmailEditText:EditText?=null
     private var resetButton:Button?=null
     private var firebaseAuth:FirebaseAuth?=null
 
@@ -22,7 +22,7 @@ class ResetPasswordActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_reset_password)
 
-        userEmail = findViewById(R.id.user_email_resetPage)
+        userEmailEditText = findViewById(R.id.user_email_resetPage)
         resetButton = findViewById(R.id.reset_btn)
         firebaseAuth = FirebaseAuth.getInstance()
 
@@ -32,7 +32,7 @@ class ResetPasswordActivity : AppCompatActivity() {
     }
 
     private fun resetPassword() {
-        var email_text = userEmail?.text.toString().trim()
+        var email_text = userEmailEditText?.text.toString().trim()
         if(TextUtils.isEmpty(email_text)) {
             Toast.makeText(applicationContext, "Please enter your email address", Toast.LENGTH_SHORT).show()
         } else {
