@@ -17,8 +17,8 @@ import com.google.firebase.auth.FirebaseUser
 class SignUpActivity : AppCompatActivity() {
 
     private var signUp: Button?= null
-    private var userEmail: EditText?=null
-    private var userPassword:EditText?=null
+    private var userEmailEditText: EditText?=null
+    private var userPasswordEditText:EditText?=null
     private var firebaseAuth: FirebaseAuth?=null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,8 +26,8 @@ class SignUpActivity : AppCompatActivity() {
         setContentView(R.layout.activity_sign_up)
 
         signUp = findViewById(R.id.signUp_btn)
-        userEmail = findViewById(R.id.user_email)
-        userPassword = findViewById(R.id.user_password)
+        userEmailEditText = findViewById(R.id.user_email)
+        userPasswordEditText = findViewById(R.id.user_password)
         firebaseAuth = FirebaseAuth.getInstance()
 
         signUp?.setOnClickListener {
@@ -40,8 +40,8 @@ class SignUpActivity : AppCompatActivity() {
     }
 
     private fun registerAccount() {
-        val email = userEmail?.text.toString().trim()
-        val password = userPassword?.text.toString().trim()
+        val email = userEmailEditText?.text.toString().trim()
+        val password = userPasswordEditText?.text.toString().trim()
 
         if (TextUtils.isEmpty(email)) {
             Toast.makeText(applicationContext,"This field cannot be empty!", Toast.LENGTH_SHORT).show()
