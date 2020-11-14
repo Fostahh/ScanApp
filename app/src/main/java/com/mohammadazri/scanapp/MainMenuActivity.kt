@@ -19,15 +19,13 @@ class MainMenuActivity : AppCompatActivity() {
         val profile = ProfileFragment()
 
 
-        addButton.setOnClickListener(View.OnClickListener {
+        addButton.setOnClickListener {
             startActivity(Intent(this@MainMenuActivity, AddProductActivity::class.java))
-        })
+        }
 
         val fragmentChanger = supportFragmentManager.beginTransaction()
         fragmentChanger.replace(R.id.frame_layout, home)
         fragmentChanger.commit()
-
-
 
         bottomNavigation.setOnNavigationItemSelectedListener { item ->
 
