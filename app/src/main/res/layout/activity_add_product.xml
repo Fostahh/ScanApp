@@ -39,14 +39,11 @@
             android:id="@+id/product_code"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="false"
-            android:layout_centerVertical="false"
             android:layout_margin="15dp"
             android:background="@android:color/white"
             android:padding="10dp"
-            android:text="TextView"
-            android:textColor="@android:color/black"
-            android:textSize="20sp" />
+            android:text="Barcode/QR Code"
+            android:textSize="18sp" />
 
         <EditText
             android:id="@+id/product_name"
@@ -56,8 +53,7 @@
             android:background="@android:color/white"
             android:hint="Product Name"
             android:inputType="textPersonName"
-            android:padding="10dp"
-            android:textColorHint="@android:color/black" />
+            android:padding="10dp" />
 
         <EditText
             android:id="@+id/product_expired"
@@ -67,8 +63,7 @@
             android:background="@android:color/white"
             android:hint="Expired Date"
             android:inputType="textPersonName"
-            android:padding="10dp"
-            android:textColorHint="@android:color/black" />
+            android:padding="10dp" />
 
         <Button
             android:id="@+id/addProduct_btn"
