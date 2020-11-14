@@ -10,6 +10,33 @@ class MainMenuActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main_menu)
 
         val bottomNavigation = findViewById<BottomNavigationView>(R.id.bottomNavigationMainMenu)
+        val home = HomeFragment()
+        val profile = ProfileFragment()
 
+        val fragmentChanger = supportFragmentManager.beginTransaction()
+        fragmentChanger.replace(R.id.frame_layout, home)
+        fragmentChanger.commit()
+
+        bottomNavigation.setOnNavigationItemSelectedListener { item ->
+
+            when(item.itemId) {
+                R.id.home_menu -> {
+                    val fragmentChanger = supportFragmentManager.beginTransaction()
+                    fragmentChanger.replace(R.id.frame_layout, home)
+                    fragmentChanger.commit()
+
+                    true
+                }
+
+                R.id.profile_menu -> {
+                    val fragmentChanger = supportFragmentManager.beginTransaction()
+                    fragmentChanger.replace(R.id.frame_layout, profile)
+                    fragmentChanger.commit()
+
+                    true
+                }
+                else -> false
+            }
+        }
     }
 }

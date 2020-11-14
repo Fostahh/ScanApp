@@ -15,6 +15,7 @@
         <activity android:name=".CheckProductActivity"></activity>
         <activity android:name=".AddProductActivity" />
         <activity android:name=".ChangeEmailActivity" />
+        <activity android:name=".MainMenuActivity"/>
         <activity android:name=".ChangeProfileActivity" />
         <activity android:name=".UserProfileActivity" />
         <activity android:name=".ResetPasswordActivity" />

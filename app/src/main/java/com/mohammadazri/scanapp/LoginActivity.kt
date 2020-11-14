@@ -53,7 +53,7 @@ class LoginActivity : AppCompatActivity() {
                         val user: FirebaseUser = firebaseAuth!!.currentUser!!
 
                         if(user.isEmailVerified) {
-                            startActivity(Intent(this@LoginActivity, UserProfileActivity::class.java))
+                            startActivity(Intent(this@LoginActivity, MainMenuActivity::class.java))
                         } else {
                             Toast.makeText(applicationContext, "Account hasn't been verified", Toast.LENGTH_SHORT).show()
                         }
