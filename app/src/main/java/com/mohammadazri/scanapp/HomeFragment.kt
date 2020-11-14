@@ -44,11 +44,8 @@ class HomeFragment : Fragment() {
         val layout = inflater.inflate(R.layout.fragment_home, container, false)
         recyclerView = layout.findViewById(R.id.homeFragmentRecyclerView)
         recyclerView.layoutManager = LinearLayoutManager(context)
-
-        val query: Query = FirebaseDatabase.getInstance().getReference().child("Product")
-
         val options: FirebaseRecyclerOptions<Product> = FirebaseRecyclerOptions.Builder<Product>()
-            .setQuery(query, Product::class.java)
+            .setQuery(FirebaseDatabase.getInstance().getReference().child("Product"), Product::class.java)
             .build()
 
         adapter = ProductAdapter(options)

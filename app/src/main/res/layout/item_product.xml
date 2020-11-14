@@ -11,23 +11,27 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="8dp">
+        android:padding="15dp">
 
         <TextView
-            android:id="@+id/codeProduct"
+            android:id="@+id/code"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Product Code"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
+            android:text="TextView" />
 
         <TextView
-            android:id="@+id/nupProduct"
+            android:id="@+id/expireDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="NUP"
-            android:layout_below="@id/codeProduct"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
+            android:layout_below="@id/code"
+            android:text="TextView" />
 
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/expireDate"
+            android:text="TextView" />
     </RelativeLayout>
 
 </androidx.cardview.widget.CardView>
