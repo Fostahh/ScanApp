@@ -47,9 +47,9 @@ class ProfileFragment : Fragment() {
         // Inflate the layout for this fragment
         val layout = inflater.inflate(R.layout.fragment_profile, container, false)
 
-        var fName:TextView
-        var lName:TextView
-        var username:TextView
+        lateinit var fName:TextView
+        lateinit var lName:TextView
+        lateinit var username:TextView
 
         fName = layout.findViewById(R.id.fName_textView)
         lName = layout.findViewById(R.id.lName_textView)
@@ -64,6 +64,14 @@ class ProfileFragment : Fragment() {
         )
         val firebaseStorage:StorageReference = FirebaseStorage.getInstance().getReference()
 
+
+        val profileImage = firebaseStorage.child("users/" + firebaseUser.getUid() + "/profile.jpg")
+        profileImage.getDownloadUrl().addOnSuccessListener(object : OnSuccessListener<Uri> {
+            override fun onSuccess(uri: Uri?) {
+                Picasso.get().load(uri).into(userPicture)
+            }
+        })
+
         firebaseDatabase.addValueEventListener(object : ValueEventListener {
             override fun onCancelled(error: DatabaseError) {}
 
@@ -77,13 +85,6 @@ class ProfileFragment : Fragment() {
                     lName?.text = lastName
                     username?.text = userName
                 }
-            }
-        })
-
-        val profileImage = firebaseStorage.child("users/" + firebaseUser.getUid() + "/profile.jpg")
-        profileImage.getDownloadUrl().addOnSuccessListener(object : OnSuccessListener<Uri> {
-            override fun onSuccess(uri: Uri?) {
-                Picasso.get().load(uri).into(userPicture)
             }
         })
 

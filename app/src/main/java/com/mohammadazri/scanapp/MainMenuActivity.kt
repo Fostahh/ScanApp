@@ -9,15 +9,15 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class MainMenuActivity : AppCompatActivity() {
 
-    val addButton:FloatingActionButton = findViewById(R.id.addButton)
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_menu)
 
         val bottomNavigation = findViewById<BottomNavigationView>(R.id.bottomNavigationMainMenu)
+        val addButton = findViewById<FloatingActionButton>(R.id.addButton)
         val home = HomeFragment()
         val profile = ProfileFragment()
+
 
         addButton.setOnClickListener(View.OnClickListener {
             startActivity(Intent(this@MainMenuActivity, AddProductActivity::class.java))
@@ -27,14 +27,14 @@ class MainMenuActivity : AppCompatActivity() {
         fragmentChanger.replace(R.id.frame_layout, home)
         fragmentChanger.commit()
 
-        showFloatingActionButton()
+
 
         bottomNavigation.setOnNavigationItemSelectedListener { item ->
 
             when(item.itemId) {
                 R.id.home_menu -> {
                     val fragmentChanger = supportFragmentManager.beginTransaction()
-                    showFloatingActionButton()
+                    addButton.show()
                     fragmentChanger.replace(R.id.frame_layout, home)
                     fragmentChanger.commit()
                     true
@@ -42,7 +42,7 @@ class MainMenuActivity : AppCompatActivity() {
 
                 R.id.profile_menu -> {
                     val fragmentChanger = supportFragmentManager.beginTransaction()
-                    hideFloatingActionButton()
+                    addButton.hide()
                     fragmentChanger.replace(R.id.frame_layout, profile)
                     fragmentChanger.commit()
 
@@ -52,13 +52,4 @@ class MainMenuActivity : AppCompatActivity() {
             }
         }
     }
-
-    private fun showFloatingActionButton() {
-        addButton.show()
-    }
-
-    private fun hideFloatingActionButton() {
-        addButton.hide()
-    }
-
 }
