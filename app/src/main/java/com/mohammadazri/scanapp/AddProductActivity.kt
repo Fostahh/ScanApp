@@ -79,7 +79,7 @@ class AddProductActivity : AppCompatActivity() {
                                 "Data has been added",
                                 Toast.LENGTH_SHORT
                             ).show()
-                            startActivity(Intent(this@AddProductActivity, UserProfileActivity::class.java))
+                            startActivity(Intent(this@AddProductActivity, ProfileFragment::class.java))
                         } else {
                             val error = task.exception?.message
                             Toast.makeText(applicationContext, "Error " + error, Toast.LENGTH_SHORT)

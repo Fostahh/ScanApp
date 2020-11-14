@@ -95,7 +95,7 @@ class ChangeProfileActivity : AppCompatActivity() {
                 override fun onComplete(task: Task<Void>) {
                     if (task.isSuccessful) {
                         Toast.makeText(applicationContext, "Your profile has been updated", Toast.LENGTH_SHORT).show()
-                        startActivity(Intent(this@ChangeProfileActivity, UserProfileActivity::class.java))
+                        startActivity(Intent(this@ChangeProfileActivity, ProfileFragment::class.java))
                     } else {
                         val error = task.exception?.message
                         Toast.makeText(applicationContext, "Error " + error, Toast.LENGTH_SHORT).show()
