@@ -21,7 +21,7 @@ private const val ARG_PARAM2 = "param2"
  * Use the [HomeFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class HomeFragment : Fragment() {
+class HomeFragment : Fragment(){
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -48,10 +48,11 @@ class HomeFragment : Fragment() {
             .setQuery(FirebaseDatabase.getInstance().getReference().child("Product"), Product::class.java)
             .build()
 
-        adapter = ProductAdapter(options)
+        adapter = context?.let { ProductAdapter(it, options) }!!
         recyclerView.adapter = adapter
         return layout
     }
+
 
     override fun onStart() {
         super.onStart()
@@ -82,4 +83,6 @@ class HomeFragment : Fragment() {
                 }
             }
     }
+
+
 }

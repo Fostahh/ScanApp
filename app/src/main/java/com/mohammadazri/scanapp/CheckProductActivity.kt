@@ -2,44 +2,61 @@ package com.mohammadazri.scanapp
 
 import android.content.Intent
 import android.content.pm.PackageManager
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextUtils
 import android.util.Log
 import android.view.View
 import android.widget.Button
+import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.budiyev.android.codescanner.*
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.android.gms.tasks.Task
 import com.google.firebase.database.*
 
 class CheckProductActivity : AppCompatActivity() {
 
     private val cameraRequestCode = 101
-    private var codeScanner:CodeScanner?=null
-    private var scannerView:CodeScannerView?=null
-    private var productCode:TextView?=null
-    private var productName:TextView?=null
-    private var productExpireDate:TextView?=null
+    private var codeScanner: CodeScanner? = null
+    private var scannerView: CodeScannerView? = null
+    private var qrbarcodeBarang: TextView? = null
+    private var nupBarang: TextView? = null
+    private var kodeBarang: TextView? = null
+    private var tempatRuanganBarang: TextView? = null
+    private var tahunPerolehanBarang: TextView? = null
+    private var kondisiBarang: EditText? = null
+    private var updateProduct: Button? = null
+    private var checkAgain:Button?=null
 
-    private var firebaseDatabase:DatabaseReference? = null
+    private var firebaseDatabase: DatabaseReference? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_check_product)
 
         scannerView = findViewById(R.id.scanner_view)
-        productCode = findViewById(R.id.check_product_code)
-        productName = findViewById(R.id.check_product_name)
-        productExpireDate = findViewById(R.id.check_product_expire)
+        qrbarcodeBarang = findViewById(R.id.qrbarcodeCheckProduct)
+        nupBarang = findViewById(R.id.nupCheckProduct)
+        kodeBarang = findViewById(R.id.kodeBarangCheckProduct)
+        tempatRuanganBarang = findViewById(R.id.tempatRuanganCheckProduct)
+        tahunPerolehanBarang = findViewById(R.id.tahunPerolehanCheckProduct)
+        kondisiBarang = findViewById(R.id.kondisiBarangEditable)
+        updateProduct = findViewById(R.id.updateCheckProduct)
 
-        productCode?.visibility = View.GONE
-        productName?.visibility = View.GONE
-        productExpireDate?.visibility = View.GONE
+        nupBarang?.visibility = View.GONE
+        kodeBarang?.visibility = View.GONE
+        tahunPerolehanBarang?.visibility = View.GONE
+        tempatRuanganBarang?.visibility = View.GONE
+        kondisiBarang?.visibility = View.GONE
 
         setupPermissions()
         codeScanner()
+
     }
 
     private fun codeScanner() {
@@ -55,7 +72,7 @@ class CheckProductActivity : AppCompatActivity() {
 
             decodeCallback = DecodeCallback {
                 runOnUiThread {
-                    productCode?.text = it.text
+                    qrbarcodeBarang?.text = it.text
                     showProductDetail()
                 }
             }
@@ -73,23 +90,50 @@ class CheckProductActivity : AppCompatActivity() {
     }
 
     private fun showProductDetail() {
-        firebaseDatabase = FirebaseDatabase.getInstance().reference.child("Product").child(productCode?.text as String)
+        firebaseDatabase = FirebaseDatabase.getInstance().reference.child("Product").child(qrbarcodeBarang?.text.toString().trim())
         firebaseDatabase?.addValueEventListener(object : ValueEventListener {
-            override fun onCancelled(error: DatabaseError) {
-
-            }
-
+            override fun onCancelled(error: DatabaseError) {}
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()) {
-                    val name = snapshot.child("name").value as String
-                    val expireDate = snapshot.child("expireDate").value as String
+                    val nup = snapshot.child("NUP").value as String
+                    val kode = snapshot.child("kodeBarang").value as String
+                    val kondisi = snapshot.child("kondisiBarang").value as String
+                    val thnPeroleh = snapshot.child("tahunPeroleh").value as String
+                    val tmptRuangan = snapshot.child("tempatRuangan").value as String
 
-                    productName?.text = name
-                    productExpireDate?.text = expireDate
+                    nupBarang?.text = nup
+                    kodeBarang?.text = kode
+                    kondisiBarang?.setText(kondisi)
+                    tahunPerolehanBarang?.text = thnPeroleh
+                    tempatRuanganBarang?.text = tmptRuangan
 
-                    productCode?.visibility = View.VISIBLE
-                    productName?.visibility = View.VISIBLE
-                    productExpireDate?.visibility = View.VISIBLE
+                    nupBarang?.visibility = View.VISIBLE
+                    kodeBarang?.visibility = View.VISIBLE
+                    kondisiBarang?.visibility = View.VISIBLE
+                    tahunPerolehanBarang?.visibility = View.VISIBLE
+                    tempatRuanganBarang?.visibility = View.VISIBLE
+
+                    updateProduct?.setOnClickListener {
+                        if (kondisiBarang?.text.toString().trim() != kondisi) {
+                            val updateKondisi = HashMap<String, Any>()
+                            updateKondisi.put("kondisiBarang", kondisiBarang?.text.toString().trim())
+                            firebaseDatabase?.updateChildren(updateKondisi)?.addOnCompleteListener(object:OnCompleteListener<Void>{
+                                override fun onComplete(task: Task<Void>) {
+                                    if (task.isSuccessful) {
+                                        Toast.makeText(applicationContext, "Kondisi barang berhasil diupdate", Toast.LENGTH_SHORT).show()
+                                        startActivity(Intent(applicationContext, MainMenuActivity::class.java))
+                                    } else {
+                                        val error = task.exception?.message
+                                        Toast.makeText(applicationContext, "Error " + error, Toast.LENGTH_SHORT).show()
+                                    }
+                                }
+
+                            })
+                        } else {
+                            Toast.makeText(applicationContext, "Update kondisi barang terlebih dahulu!", Toast.LENGTH_SHORT).show()
+                            startActivity(Intent(applicationContext, CheckProductActivity::class.java))
+                        }
+                    }
                 }
             }
         })
@@ -108,7 +152,7 @@ class CheckProductActivity : AppCompatActivity() {
     private fun setupPermissions() {
         val permission = ContextCompat.checkSelfPermission(this, android.Manifest.permission.CAMERA)
 
-        if(permission!= PackageManager.PERMISSION_GRANTED) {
+        if (permission != PackageManager.PERMISSION_GRANTED) {
             makeRequest()
         }
     }
@@ -118,7 +162,7 @@ class CheckProductActivity : AppCompatActivity() {
     }
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
-        when(requestCode) {
+        when (requestCode) {
             cameraRequestCode -> {
                 if (grantResults.isEmpty() || grantResults[0] != PackageManager.PERMISSION_GRANTED) {
                     Toast.makeText(this, "You need the camera permission to be able to use this feature!", Toast.LENGTH_SHORT).show()

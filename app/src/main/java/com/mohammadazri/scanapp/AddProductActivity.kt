@@ -24,11 +24,15 @@ class AddProductActivity : AppCompatActivity() {
     private val cameraRequestCode = 101
     private var codeScanner: CodeScanner?=null
     private var scannerView: CodeScannerView?=null
-    private var productName: EditText? = null
-    private var productCode:TextView?=null
-    private var productExpireDate: EditText? = null
+    private var qrbarcodeBarang:TextView?=null
+    private var kodeBarang:EditText?=null
+    private var tahunPerolehan: EditText? = null
+    private var nup: EditText? = null
+    private var tempatRuangan:EditText?=null
+    private var kondisiBarang:EditText?=null
     private var addProductButton: Button? = null
-    
+
+
     private var firebaseDatabase: DatabaseReference? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,10 +40,13 @@ class AddProductActivity : AppCompatActivity() {
         setContentView(R.layout.activity_add_product)
 
         scannerView = findViewById(R.id.scanner_view)
-        productName = findViewById(R.id.product_name)
-        productExpireDate = findViewById(R.id.product_expired)
-        addProductButton = findViewById(R.id.addProduct_btn)
-        productCode = findViewById(R.id.product_code)
+        qrbarcodeBarang = findViewById(R.id.qrbarcodeAddProduct)
+        kodeBarang = findViewById(R.id.kodeBarangAddProduct)
+        tahunPerolehan = findViewById(R.id.tahunPerolehanAddProduct)
+        nup = findViewById(R.id.nupAddProduct)
+        tempatRuangan = findViewById(R.id.tempatRuanganAddProduct)
+        kondisiBarang = findViewById(R.id.kondisibarangAddProduct)
+        addProductButton = findViewById(R.id.addProductButton)
 
         setupPermission()
         codeScanner()
@@ -50,36 +57,42 @@ class AddProductActivity : AppCompatActivity() {
     }
 
     private fun addProductToFirebase() {
-        val code = productCode?.text.toString().trim()
-        val name = productName?.text.toString().trim()
-        val expired = productExpireDate?.text.toString().trim()
+        val qrbarcode = qrbarcodeBarang?.text.toString().trim()
+        val kodeBrg = kodeBarang?.text.toString().trim()
+        val thnPeroleh = tahunPerolehan?.text.toString().trim()
+        val nomorUrutP = nup?.text.toString().trim()
+        val tmptRuangan = tempatRuangan?.text.toString().trim()
+        val kondisiBrg = kondisiBarang?.text.toString().trim()
 
-        if (TextUtils.isEmpty(code)) {
-            Toast.makeText(applicationContext, "Please scan a product!", Toast.LENGTH_SHORT)
+        if (TextUtils.isEmpty(qrbarcode)) {
+            Toast.makeText(applicationContext, "Scan Barang Terlebih Dahulu", Toast.LENGTH_SHORT)
+                    .show()
+        } else if (TextUtils.isEmpty(kodeBrg)) {
+            Toast.makeText(applicationContext, "Isi Kolom Kode Barang Terlebih Dahulu", Toast.LENGTH_SHORT)
                 .show()
-        } else if (TextUtils.isEmpty(name)) {
-            Toast.makeText(applicationContext, "Please fill the product name!", Toast.LENGTH_SHORT)
-                .show()
-        } else if (TextUtils.isEmpty(expired)) {
-            Toast.makeText(applicationContext, "Please fill the expire date of the product!", Toast.LENGTH_SHORT).show()
+        } else if (TextUtils.isEmpty(thnPeroleh)) {
+            Toast.makeText(applicationContext, "Isi Kolom Tahun Peroleh Terlebih Dahulu", Toast.LENGTH_SHORT).show()
+        } else if (TextUtils.isEmpty(nomorUrutP)) {
+            Toast.makeText(applicationContext, "Isi Kolom NUP Terlebih Dahulu", Toast.LENGTH_SHORT).show()
+        } else if (TextUtils.isEmpty(tmptRuangan)) {
+            Toast.makeText(applicationContext, "Isi Kolom Tempat Ruangan Terlebih Dahulu", Toast.LENGTH_SHORT).show()
+        } else if (TextUtils.isEmpty(kondisiBrg)) {
+            Toast.makeText(applicationContext, "Isi Kolom Kondisi Barang Terlebih Dahulu", Toast.LENGTH_SHORT).show()
         } else {
             val productInfo = HashMap<String, Any>()
-            productInfo.put("code", code)
-            productInfo.put("name", name)
-            productInfo.put("expireDate", expired)
+            productInfo.put("kodeBarang", kodeBrg)
+            productInfo.put("tahunPeroleh", thnPeroleh)
+            productInfo.put("NUP", nomorUrutP)
+            productInfo.put("tempatRuangan", tmptRuangan)
+            productInfo.put("kondisiBarang", kondisiBrg)
 
-            firebaseDatabase = FirebaseDatabase.getInstance().reference.child("Product").child(code)
+            firebaseDatabase = FirebaseDatabase.getInstance().reference.child("Product").child(qrbarcode)
 
-            firebaseDatabase?.updateChildren(productInfo)
-                ?.addOnCompleteListener(object : OnCompleteListener<Void> {
+            firebaseDatabase?.updateChildren(productInfo)?.addOnCompleteListener(object : OnCompleteListener<Void> {
                     override fun onComplete(task: Task<Void>) {
                         if (task.isSuccessful) {
-                            Toast.makeText(
-                                applicationContext,
-                                "Data has been added",
-                                Toast.LENGTH_SHORT
-                            ).show()
-                            startActivity(Intent(this@AddProductActivity, ProfileFragment::class.java))
+                            Toast.makeText(applicationContext, "Data Berhasil Ditambahkan!", Toast.LENGTH_SHORT).show()
+                            startActivity(Intent(this@AddProductActivity, AddProductActivity::class.java))
                         } else {
                             val error = task.exception?.message
                             Toast.makeText(applicationContext, "Error " + error, Toast.LENGTH_SHORT)
@@ -138,7 +151,7 @@ class AddProductActivity : AppCompatActivity() {
 
             decodeCallback = DecodeCallback {
                 runOnUiThread {
-                    productCode!!.text = it.text
+                    qrbarcodeBarang!!.text = it.text
                 }
             }
 

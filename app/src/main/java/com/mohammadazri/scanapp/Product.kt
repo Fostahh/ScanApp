@@ -2,9 +2,11 @@ package com.mohammadazri.scanapp
 
 class Product{
 
-    var code:String = ""
-    var expireDate:String = ""
-    var name:String = ""
+    var kodeBarang:String = ""
+    var tahunPeroleh:String = ""
+    var NUP:String = ""
+    var tempatRuangan:String = ""
+    var kondisiBarang:String = ""
 
     fun Product() {
 

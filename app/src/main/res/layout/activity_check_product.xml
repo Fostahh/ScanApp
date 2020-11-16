@@ -16,7 +16,7 @@
     <com.budiyev.android.codescanner.CodeScannerView
         android:id="@+id/scanner_view"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="200dp"
         app:autoFocusButtonColor="@android:color/white"
         app:autoFocusButtonVisible="true"
         app:flashButtonColor="@android:color/white"
@@ -35,41 +35,96 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/check_product_code"
+            android:id="@+id/qrbarcodeCheckProduct"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="false"
-            android:layout_centerVertical="false"
-            android:layout_margin="15dp"
+            android:layout_margin="5dp"
             android:background="@android:color/white"
-            android:padding="10dp"
-            android:text="TextView"
-            android:textColor="@android:color/black"
-            android:textSize="20sp" />
-
-        <TextView
-            android:id="@+id/check_product_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="false"
-            android:layout_centerVertical="false"
-            android:layout_margin="15dp"
-            android:background="@android:color/white"
+            android:hint="@string/scan_text"
             android:padding="10dp"
             android:textColor="@android:color/black"
             android:textSize="20sp" />
 
         <TextView
-            android:id="@+id/check_product_expire"
+            android:id="@+id/nupCheckProduct"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="false"
-            android:layout_centerVertical="false"
-            android:layout_margin="15dp"
+            android:layout_margin="5dp"
             android:background="@android:color/white"
+            android:hint="@string/nup_text"
             android:padding="10dp"
             android:textColor="@android:color/black"
             android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/kodeBarangCheckProduct"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:background="@android:color/white"
+            android:padding="10dp"
+            android:hint="@string/kode_text"
+            android:textColor="@android:color/black"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/tempatRuanganCheckProduct"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:background="@android:color/white"
+            android:padding="10dp"
+            android:hint="@string/tempat_text"
+            android:textColor="@android:color/black"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/tahunPerolehanCheckProduct"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:background="@android:color/white"
+            android:padding="10dp"
+            android:hint="@string/tahun_text"
+            android:textColor="@android:color/black"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/kondisiBarangEditable"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:background="@android:color/white"
+            android:hint="@string/kondisi_text"
+            android:inputType="textPersonName"
+            android:padding="10dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/updateCheckProduct"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@android:color/holo_blue_light"
+            style="?android:attr/borderlessButtonStyle"
+            android:text="@string/update_text" />
+
+        <Button
+            android:id="@+id/checkAgainButton"
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            style="?android:attr/borderlessButtonStyle"
+            android:background="@android:color/holo_orange_light"
+            android:text="@string/check_text" />
 
     </LinearLayout>
 

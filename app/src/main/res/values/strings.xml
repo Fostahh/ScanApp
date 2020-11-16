@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">ScanApp</string>
+    <string name="text_view">Text View</string>
+    <string name="check_text">Check Again</string>
+    <string name="close_text">Close</string>
+    <string name="update_text">Update</string>
+    <string name="add_text">Add</string>
+    <string name="scan_text">Scan QR/Bardcode Terlebih Dahulu</string>
+    <string name="nup_text">Nomor Urut Pendaftaran</string>
+    <string name="kode_text">Kode Barang</string>
+    <string name="tempat_text">Tempat Ruangan</string>
+    <string name="tahun_text">Tahun Perolehan</string>
+    <string name="kondisi_text">Kondisi Barang</string>
+    <string name="profile_text">Profile</string>
+    <string name="home_text">Home</string>
 </resources>

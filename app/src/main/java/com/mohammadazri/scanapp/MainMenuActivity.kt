@@ -46,6 +46,7 @@ class MainMenuActivity : AppCompatActivity() {
 
                     true
                 }
+
                 else -> false
             }
         }
