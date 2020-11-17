@@ -13,16 +13,6 @@
         android:orientation="vertical">
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/title_profilePage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp"
-        android:text="Fill out your Profile Information"
-        android:textColor="@android:color/white"
-        android:textSize="26sp" />
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -84,7 +74,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_margin="15dp"
             android:background="@android:color/holo_blue_light"
-            android:text="Update" />
+            android:text="@string/updatee_text" />
     </LinearLayout>
 
 </RelativeLayout>

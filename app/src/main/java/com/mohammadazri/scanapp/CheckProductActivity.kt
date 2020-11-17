@@ -165,7 +165,7 @@ class CheckProductActivity : AppCompatActivity() {
         when (requestCode) {
             cameraRequestCode -> {
                 if (grantResults.isEmpty() || grantResults[0] != PackageManager.PERMISSION_GRANTED) {
-                    Toast.makeText(this, "You need the camera permission to be able to use this feature!", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Anda harus memberi izin camera untuk menggunakan fitur ini", Toast.LENGTH_SHORT).show()
                 }
             }
         }

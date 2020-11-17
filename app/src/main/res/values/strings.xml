@@ -1,8 +1,8 @@
 <resources>
-    <string name="app_name">ScanApp</string>
+    <string name="app_name">BMN Scanner</string>
     <string name="text_view">Text View</string>
-    <string name="check_text">Check Again</string>
-    <string name="close_text">Close</string>
+    <string name="check_text">Cek Lagi</string>
+    <string name="close_text">Tutup</string>
     <string name="update_text">Update</string>
     <string name="add_text">Add</string>
     <string name="scan_text">Scan QR/Bardcode Terlebih Dahulu</string>
@@ -13,4 +13,6 @@
     <string name="kondisi_text">Kondisi Barang</string>
     <string name="profile_text">Profile</string>
     <string name="home_text">Home</string>
+    <string name="changeProfile_text">Ubah Profil</string>
+    <string name="updatee_text">Perbaharui</string>
 </resources>

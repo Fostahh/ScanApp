@@ -77,13 +77,13 @@ class ChangeProfileActivity : AppCompatActivity() {
         val username = userName?.text.toString().trim()
 
         if (TextUtils.isEmpty(fName)) {
-            Toast.makeText(applicationContext, "Please enter your first name", Toast.LENGTH_SHORT)
+            Toast.makeText(applicationContext, "Isi kolom nama depan", Toast.LENGTH_SHORT)
                     .show()
         } else if (TextUtils.isEmpty(lName)) {
-            Toast.makeText(applicationContext, "Please enter your last name", Toast.LENGTH_SHORT)
+            Toast.makeText(applicationContext, "Isi kolom nama belakang", Toast.LENGTH_SHORT)
                     .show()
         } else if (TextUtils.isEmpty(username)) {
-            Toast.makeText(applicationContext, "Please enter your username", Toast.LENGTH_SHORT)
+            Toast.makeText(applicationContext, "Isi kolom username", Toast.LENGTH_SHORT)
                     .show()
         } else {
             val userInfo = HashMap<String, Any>()
@@ -94,7 +94,7 @@ class ChangeProfileActivity : AppCompatActivity() {
             firebaseDatabase?.updateChildren(userInfo)?.addOnCompleteListener(object : OnCompleteListener<Void> {
                 override fun onComplete(task: Task<Void>) {
                     if (task.isSuccessful) {
-                        Toast.makeText(applicationContext, "Your profile has been updated", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(applicationContext, "Profil berhasil diperbaharui", Toast.LENGTH_SHORT).show()
                         startActivity(Intent(this@ChangeProfileActivity, MainMenuActivity::class.java))
                     } else {
                         val error = task.exception?.message
@@ -154,6 +154,8 @@ class ChangeProfileActivity : AppCompatActivity() {
                             }
                         }
                     })
+        } else {
+            Toast.makeText(applicationContext, "Silahkan masukan gambar", Toast.LENGTH_SHORT).show()
         }
     }
 }

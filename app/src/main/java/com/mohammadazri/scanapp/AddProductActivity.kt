@@ -91,7 +91,7 @@ class AddProductActivity : AppCompatActivity() {
             firebaseDatabase?.updateChildren(productInfo)?.addOnCompleteListener(object : OnCompleteListener<Void> {
                     override fun onComplete(task: Task<Void>) {
                         if (task.isSuccessful) {
-                            Toast.makeText(applicationContext, "Data Berhasil Ditambahkan!", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(applicationContext, "Data telah ditambahkan", Toast.LENGTH_SHORT).show()
                             startActivity(Intent(this@AddProductActivity, AddProductActivity::class.java))
                         } else {
                             val error = task.exception?.message
@@ -130,7 +130,7 @@ class AddProductActivity : AppCompatActivity() {
             cameraRequestCode -> {
                 if (grantResults.isEmpty() || grantResults[0] != PackageManager.PERMISSION_GRANTED) {
                     Toast.makeText(
-                        this, "You need the camera permission to be able to use this feature!",
+                        this, "Anda harus memberi izin camera untuk menggunakan fitur ini",
                         Toast.LENGTH_SHORT
                     ).show()
                 }

@@ -40,22 +40,21 @@ class LoginActivity : AppCompatActivity() {
         val password = userPassword?.text.toString().trim()
 
         if (TextUtils.isEmpty(email)) {
-            Toast.makeText(applicationContext,"This field cannot be empty!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(applicationContext,"Isi kolom email", Toast.LENGTH_SHORT).show()
         } else if (TextUtils.isEmpty(password)) {
-            Toast.makeText(applicationContext,"This field cannot be empty!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(applicationContext,"Isi kolom password", Toast.LENGTH_SHORT).show()
         } else {
 
             firebaseAuth?.signInWithEmailAndPassword(email,password)?.addOnCompleteListener(object:
                 OnCompleteListener<AuthResult> {
                 override fun onComplete(task: Task<AuthResult>) {
                     if(task.isSuccessful) {
-                        Toast.makeText(applicationContext, "Login Successful", Toast.LENGTH_SHORT).show()
                         val user: FirebaseUser = firebaseAuth!!.currentUser!!
-
                         if(user.isEmailVerified) {
+                            Toast.makeText(applicationContext, "Berhasil login", Toast.LENGTH_SHORT).show()
                             startActivity(Intent(this@LoginActivity, MainMenuActivity::class.java))
                         } else {
-                            Toast.makeText(applicationContext, "Account hasn't been verified", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(applicationContext, "Akun belum diverifikasi", Toast.LENGTH_SHORT).show()
                         }
                     } else {
                         val error = task.exception?.message

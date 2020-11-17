@@ -36,16 +36,16 @@ class ResetPasswordActivity : AppCompatActivity() {
     }
 
     private fun resetPassword() {
-        var email_text = user_email?.text.toString().trim()
+        val email_text = user_email?.text.toString().trim()
 
         if(TextUtils.isEmpty(email_text)) {
-            Toast.makeText(applicationContext, "Please enter your email address", Toast.LENGTH_SHORT).show()
+            Toast.makeText(applicationContext, "Isi kolom email", Toast.LENGTH_SHORT).show()
         } else {
             firebaseAuth?.sendPasswordResetEmail(email_text)?.addOnCompleteListener(object:OnCompleteListener<Void>{
                 override fun onComplete(task: Task<Void>) {
 
                     if(task.isSuccessful){
-                        Toast.makeText(applicationContext, "Please check your email", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(applicationContext, "Silahkan cek email Anda", Toast.LENGTH_SHORT).show()
                     } else {
                         val error = task.exception?.message
                         Toast.makeText(applicationContext, "Error " + error, Toast.LENGTH_SHORT).show()

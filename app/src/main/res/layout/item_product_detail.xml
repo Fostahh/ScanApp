@@ -21,8 +21,7 @@
                 android:layout_margin="10dp"
                 android:padding="10dp"
                 android:text="@string/text_view"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/kodeBarangProductDetail"
@@ -32,8 +31,7 @@
                 android:layout_margin="10dp"
                 android:padding="10dp"
                 android:text="@string/text_view"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/tahunPerolehanProductDetail"
@@ -43,8 +41,7 @@
                 android:layout_margin="10dp"
                 android:padding="10dp"
                 android:text="@string/text_view"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/tempatRuanganProductDetail"
@@ -54,8 +51,7 @@
                 android:layout_margin="10dp"
                 android:padding="10dp"
                 android:text="@string/text_view"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/kondisiBarangProductDetail"
@@ -65,8 +61,7 @@
                 android:layout_margin="10dp"
                 android:padding="10dp"
                 android:text="@string/text_view"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+                android:textSize="18sp" />
 
             <Button
                 android:id="@+id/closeButton"

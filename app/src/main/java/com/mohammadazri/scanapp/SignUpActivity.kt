@@ -47,26 +47,25 @@ class SignUpActivity : AppCompatActivity() {
         val password = userPassword?.text.toString().trim()
 
         if (TextUtils.isEmpty(email)) {
-            Toast.makeText(applicationContext,"This field cannot be empty!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(applicationContext,"Isi kolom email", Toast.LENGTH_SHORT).show()
         } else if (TextUtils.isEmpty(password)) {
-            Toast.makeText(applicationContext,"This field cannot be empty!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(applicationContext,"Isi kolom password", Toast.LENGTH_SHORT).show()
         } else {
             firebaseAuth?.createUserWithEmailAndPassword(email,password)?.addOnCompleteListener(object : OnCompleteListener<AuthResult>{
                 override fun onComplete(task: Task<AuthResult>) {
                     if (task.isSuccessful) {
-                        Toast.makeText(applicationContext, "Account has been created!", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(applicationContext, "Akun telah dibuat", Toast.LENGTH_SHORT).show()
                         val user:FirebaseUser = firebaseAuth!!.currentUser!!
                         user.sendEmailVerification().addOnCompleteListener(object:
                             OnCompleteListener<Void> { override fun onComplete(task: Task<Void>) {
                             if(task.isSuccessful) {
-                                Toast.makeText(applicationContext, "Please check your email", Toast.LENGTH_SHORT).show()
+                                Toast.makeText(applicationContext, "Silahkan cek email anda untuk verifikasi", Toast.LENGTH_SHORT).show()
                                 startActivity(Intent(this@SignUpActivity, LoginActivity::class.java))
                             } else {
                                 val error = task.exception?.message
                                 Toast.makeText(applicationContext, "Error " + error, Toast.LENGTH_SHORT).show()
                             }
                         }
-
                         })
                     } else {
                         val error = task.exception?.message
