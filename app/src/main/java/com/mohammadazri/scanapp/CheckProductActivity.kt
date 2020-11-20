@@ -3,9 +3,9 @@ package com.mohammadazri.scanapp
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextUtils
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
@@ -30,8 +30,8 @@ class CheckProductActivity : AppCompatActivity() {
     private var tempatRuanganBarang: TextView? = null
     private var tahunPerolehanBarang: TextView? = null
     private var kondisiBarang: EditText? = null
-    private var updateProduct: Button? = null
-    private var checkAgain:Button?=null
+    private var updateButton: Button? = null
+    private var checkButton:Button?=null
 
     private var firebaseDatabase: DatabaseReference? = null
 
@@ -46,18 +46,26 @@ class CheckProductActivity : AppCompatActivity() {
         tempatRuanganBarang = findViewById(R.id.tempatRuanganCheckProduct)
         tahunPerolehanBarang = findViewById(R.id.tahunPerolehanCheckProduct)
         kondisiBarang = findViewById(R.id.kondisiBarangEditable)
-        updateProduct = findViewById(R.id.updateCheckProduct)
+        updateButton = findViewById(R.id.updateCheckProduct)
+        checkButton = findViewById(R.id.checkAgainButton)
 
         nupBarang?.visibility = View.GONE
         kodeBarang?.visibility = View.GONE
         tahunPerolehanBarang?.visibility = View.GONE
         tempatRuanganBarang?.visibility = View.GONE
         kondisiBarang?.visibility = View.GONE
+        updateButton?.visibility = View.GONE
+        checkButton?.visibility = View.GONE
 
         setupPermissions()
         codeScanner()
 
+        checkButton?.setOnClickListener {
+            startActivity(Intent(applicationContext, CheckProductActivity::class.java))
+        }
+
     }
+
 
     private fun codeScanner() {
         codeScanner = CodeScanner(this, scannerView!!)
@@ -112,8 +120,10 @@ class CheckProductActivity : AppCompatActivity() {
                     kondisiBarang?.visibility = View.VISIBLE
                     tahunPerolehanBarang?.visibility = View.VISIBLE
                     tempatRuanganBarang?.visibility = View.VISIBLE
+                    updateButton?.visibility = View.VISIBLE
+                    checkButton?.visibility = View.VISIBLE
 
-                    updateProduct?.setOnClickListener {
+                    updateButton?.setOnClickListener {
                         if (kondisiBarang?.text.toString().trim() != kondisi) {
                             val updateKondisi = HashMap<String, Any>()
                             updateKondisi.put("kondisiBarang", kondisiBarang?.text.toString().trim())
@@ -134,6 +144,7 @@ class CheckProductActivity : AppCompatActivity() {
                             startActivity(Intent(applicationContext, CheckProductActivity::class.java))
                         }
                     }
+
                 }
             }
         })

@@ -27,7 +27,6 @@ class SignUpActivity : AppCompatActivity() {
         setContentView(R.layout.activity_sign_up)
 
         signUp = findViewById(R.id.signUp_btn)
-        login = findViewById(R.id.login_btn)
         userEmail = findViewById(R.id.user_email)
         userPassword = findViewById(R.id.user_password)
         firebaseAuth = FirebaseAuth.getInstance()
@@ -36,10 +35,6 @@ class SignUpActivity : AppCompatActivity() {
             registerAccount()
         }
 
-    }
-
-    fun goToLoginPage(view: View) {
-        startActivity(Intent(this@SignUpActivity, LoginActivity::class.java))
     }
 
     private fun registerAccount() {
@@ -60,7 +55,7 @@ class SignUpActivity : AppCompatActivity() {
                             OnCompleteListener<Void> { override fun onComplete(task: Task<Void>) {
                             if(task.isSuccessful) {
                                 Toast.makeText(applicationContext, "Silahkan cek email anda untuk verifikasi", Toast.LENGTH_SHORT).show()
-                                startActivity(Intent(this@SignUpActivity, LoginActivity::class.java))
+                                startActivity(Intent(this@SignUpActivity, LoginOrSignUpActivity::class.java))
                             } else {
                                 val error = task.exception?.message
                                 Toast.makeText(applicationContext, "Error " + error, Toast.LENGTH_SHORT).show()

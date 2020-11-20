@@ -26,8 +26,6 @@ class ResetPasswordActivity : AppCompatActivity() {
 
         user_email = findViewById(R.id.user_email_resetPage)
         reset_btn = findViewById(R.id.reset_btn)
-        login_btn = findViewById(R.id.loginResetPage_btn)
-        signUp_btn = findViewById(R.id.signUpResetPage_btn)
         firebaseAuth = FirebaseAuth.getInstance()
 
         reset_btn?.setOnClickListener {
@@ -54,13 +52,5 @@ class ResetPasswordActivity : AppCompatActivity() {
 
             })
         }
-    }
-
-    fun goToLoginPage(view: View) {
-        startActivity(Intent(this, LoginActivity::class.java))
-    }
-
-    fun goToSignUpPage(view: View) {
-        startActivity(Intent(this, SignUpActivity::class.java))
     }
 }

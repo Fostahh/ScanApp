@@ -5,9 +5,7 @@ package com.mohammadazri.scanapp
 import android.app.Dialog
 import android.content.Context
 import android.text.Editable
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.*
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
@@ -69,7 +67,6 @@ class ProductAdapter(var context:Context, options: FirebaseRecyclerOptions<Produ
             }
 
         }
-
 
     }
 }

@@ -12,13 +12,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".CheckProductActivity"/>
-        <activity android:name=".AddProductActivity"/>
+        <activity android:name=".LoginOrSignUpActivity"/>
+        <activity android:name=".LoginActivity"
+            android:parentActivityName=".LoginOrSignUpActivity" />
+        <activity android:name=".SignUpActivity"
+            android:parentActivityName=".LoginOrSignUpActivity" />
+        <activity
+            android:name=".CheckProductActivity"
+            android:parentActivityName=".MainMenuActivity" />
+        <activity
+            android:name=".AddProductActivity"
+            android:parentActivityName=".MainMenuActivity" />
         <activity android:name=".MainMenuActivity" />
         <activity android:name=".ChangeProfileActivity" />
-        <activity android:name=".ResetPasswordActivity" />
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".SignUpActivity" />
+        <activity android:name=".ResetPasswordActivity"
+            android:parentActivityName=".LoginActivity"/>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

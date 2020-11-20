@@ -69,8 +69,4 @@ class LoginActivity : AppCompatActivity() {
     fun resetPassword(view: View) {
         startActivity(Intent(this@LoginActivity, ResetPasswordActivity::class.java))
     }
-
-    fun goToSignUpPage(view: View) {
-        startActivity(Intent(this@LoginActivity, SignUpActivity::class.java))
-    }
 }

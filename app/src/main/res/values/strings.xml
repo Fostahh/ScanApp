@@ -4,7 +4,7 @@
     <string name="check_text">Cek Lagi</string>
     <string name="close_text">Tutup</string>
     <string name="update_text">Update</string>
-    <string name="add_text">Add</string>
+    <string name="add_text">Tambah</string>
     <string name="scan_text">Scan QR/Bardcode Terlebih Dahulu</string>
     <string name="nup_text">Nomor Urut Pendaftaran</string>
     <string name="kode_text">Kode Barang</string>
@@ -15,4 +15,7 @@
     <string name="home_text">Home</string>
     <string name="changeProfile_text">Ubah Profil</string>
     <string name="updatee_text">Perbaharui</string>
+    <string name="kembali_text">Kembali</string>
+    <string name="signUp_text">Sign Up</string>
+    <string name="login_text">Login</string>
 </resources>

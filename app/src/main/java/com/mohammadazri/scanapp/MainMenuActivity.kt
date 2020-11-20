@@ -1,13 +1,11 @@
 package com.mohammadazri.scanapp
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.getbase.floatingactionbutton.FloatingActionsMenu
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class MainMenuActivity : AppCompatActivity() {
 
@@ -16,17 +14,12 @@ class MainMenuActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main_menu)
 
         val bottomNavigation = findViewById<BottomNavigationView>(R.id.bottomNavigationMainMenu)
-//        val addButton = findViewById<FloatingActionButton>(R.id.addButton)
         val fabMenu = findViewById<FloatingActionsMenu>(R.id.floatingActionMenu)
         val fab1 = findViewById<com.getbase.floatingactionbutton.FloatingActionButton>(R.id.floatingActionButton1)
         val fab2 = findViewById<com.getbase.floatingactionbutton.FloatingActionButton>(R.id.floatingActionButton2)
 
         val home = HomeFragment()
         val profile = ProfileFragment()
-
-//        addButton.setOnClickListener {
-//            startActivity(Intent(this@MainMenuActivity, AddProductActivity::class.java))
-//        }
 
         fab1.setOnClickListener {
             startActivity(Intent(this@MainMenuActivity, AddProductActivity::class.java))
@@ -48,21 +41,25 @@ class MainMenuActivity : AppCompatActivity() {
                     fragmentChanger.replace(R.id.frame_layout, home)
                     fabMenu.visibility = View.VISIBLE
                     fragmentChanger.commit()
+                    supportActionBar?.hide()
                     true
                 }
 
                 R.id.profile_menu -> {
                     val fragmentChanger = supportFragmentManager.beginTransaction()
-//                    addButton.hide()
                     fabMenu.visibility = View.GONE
                     fragmentChanger.replace(R.id.frame_layout, profile)
                     fragmentChanger.commit()
-
+                    supportActionBar?.hide()
                     true
                 }
 
                 else -> false
             }
         }
+    }
+
+    override fun onBackPressed() {
+        moveTaskToBack(true)
     }
 }

@@ -6,12 +6,18 @@
     android:layout_height="match_parent"
     tools:context=".ChangeProfileActivity">
 
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        app:srcCompat="@drawable/background_v2" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#000"
-        android:orientation="vertical">
-    </LinearLayout>
+        android:background="#99000000"
+        android:orientation="vertical"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -29,10 +35,8 @@
             android:layout_height="150dp"
             android:layout_gravity="center_horizontal"
             android:layout_margin="15dp"
-            android:background="@mipmap/ic_launcher_round"
             android:onClick="openGallery"
-            android:scaleType="centerCrop"
-            app:srcCompat="@mipmap/ic_launcher_round" />
+            android:scaleType="centerCrop" />
 
         <EditText
             android:id="@+id/user_fname"
@@ -73,7 +77,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_margin="15dp"
-            android:background="@android:color/holo_blue_light"
+            android:background="@drawable/input_background_border"
             android:text="@string/updatee_text" />
     </LinearLayout>
 

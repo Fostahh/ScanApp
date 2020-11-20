@@ -17,6 +17,7 @@ import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.gms.tasks.Task
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import java.nio.charset.MalformedInputException
 
 
 class AddProductActivity : AppCompatActivity() {
@@ -31,7 +32,6 @@ class AddProductActivity : AppCompatActivity() {
     private var tempatRuangan:EditText?=null
     private var kondisiBarang:EditText?=null
     private var addProductButton: Button? = null
-
 
     private var firebaseDatabase: DatabaseReference? = null
 
@@ -92,7 +92,7 @@ class AddProductActivity : AppCompatActivity() {
                     override fun onComplete(task: Task<Void>) {
                         if (task.isSuccessful) {
                             Toast.makeText(applicationContext, "Data telah ditambahkan", Toast.LENGTH_SHORT).show()
-                            startActivity(Intent(this@AddProductActivity, AddProductActivity::class.java))
+                            startActivity(Intent(this@AddProductActivity, MainMenuActivity::class.java))
                         } else {
                             val error = task.exception?.message
                             Toast.makeText(applicationContext, "Error " + error, Toast.LENGTH_SHORT)

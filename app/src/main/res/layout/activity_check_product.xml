@@ -1,132 +1,133 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#000"
+    android:fitsSystemWindows="true"
+    android:fillViewport="true"
     tools:context=".CheckProductActivity">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#000"
-        android:orientation="vertical">
-    </LinearLayout>
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
 
-    <com.budiyev.android.codescanner.CodeScannerView
-        android:id="@+id/scanner_view"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        app:autoFocusButtonColor="@android:color/white"
-        app:autoFocusButtonVisible="true"
-        app:flashButtonColor="@android:color/white"
-        app:flashButtonVisible="true"
-        app:maskColor="#6C000000" />
+        <com.budiyev.android.codescanner.CodeScannerView
+            android:id="@+id/scanner_view"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            app:autoFocusButtonColor="@android:color/white"
+            app:autoFocusButtonVisible="true"
+            app:flashButtonColor="@android:color/white"
+            app:flashButtonVisible="true"
+            app:maskColor="#6C000000" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/scanner_view"
-        android:layout_centerInParent="true"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="10dp"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/qrbarcodeCheckProduct"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:background="@android:color/white"
-            android:hint="@string/scan_text"
-            android:padding="10dp"
-            android:textColor="@android:color/black"
-            android:textSize="20sp" />
+            android:layout_below="@id/scanner_view"
+            android:layout_centerInParent="false"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/nupCheckProduct"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:background="@android:color/white"
-            android:hint="@string/nup_text"
-            android:padding="10dp"
-            android:textColor="@android:color/black"
-            android:textSize="20sp" />
+            <TextView
+                android:id="@+id/qrbarcodeCheckProduct"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:background="@android:color/white"
+                android:hint="@string/scan_text"
+                android:padding="10dp"
+                android:textColor="@android:color/black"
+                android:textSize="20sp" />
 
-        <TextView
-            android:id="@+id/kodeBarangCheckProduct"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:background="@android:color/white"
-            android:padding="10dp"
-            android:hint="@string/kode_text"
-            android:textColor="@android:color/black"
-            android:textSize="20sp" />
+            <TextView
+                android:id="@+id/nupCheckProduct"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:background="@android:color/white"
+                android:hint="@string/nup_text"
+                android:padding="10dp"
+                android:textColor="@android:color/black"
+                android:textSize="20sp" />
 
-        <TextView
-            android:id="@+id/tempatRuanganCheckProduct"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:background="@android:color/white"
-            android:padding="10dp"
-            android:hint="@string/tempat_text"
-            android:textColor="@android:color/black"
-            android:textSize="20sp" />
+            <TextView
+                android:id="@+id/kodeBarangCheckProduct"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:background="@android:color/white"
+                android:hint="@string/kode_text"
+                android:padding="10dp"
+                android:textColor="@android:color/black"
+                android:textSize="20sp" />
 
-        <TextView
-            android:id="@+id/tahunPerolehanCheckProduct"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:background="@android:color/white"
-            android:padding="10dp"
-            android:hint="@string/tahun_text"
-            android:textColor="@android:color/black"
-            android:textSize="20sp" />
+            <TextView
+                android:id="@+id/tempatRuanganCheckProduct"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:background="@android:color/white"
+                android:hint="@string/tempat_text"
+                android:padding="10dp"
+                android:textColor="@android:color/black"
+                android:textSize="20sp" />
 
-        <EditText
-            android:id="@+id/kondisiBarangEditable"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:background="@android:color/white"
-            android:hint="@string/kondisi_text"
-            android:inputType="textPersonName"
-            android:padding="10dp" />
+            <TextView
+                android:id="@+id/tahunPerolehanCheckProduct"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:background="@android:color/white"
+                android:hint="@string/tahun_text"
+                android:padding="10dp"
+                android:textColor="@android:color/black"
+                android:textSize="20sp" />
 
-    </LinearLayout>
+            <EditText
+                android:id="@+id/kondisiBarangEditable"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:background="@android:color/white"
+                android:hint="@string/kondisi_text"
+                android:inputType="textPersonName"
+                android:padding="10dp" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:orientation="horizontal">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/updateCheckProduct"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@android:color/holo_blue_light"
-            style="?android:attr/borderlessButtonStyle"
-            android:text="@string/update_text" />
+                <Button
+                    android:id="@+id/updateCheckProduct"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="5dp"
+                    android:layout_weight="1"
+                    android:background="@android:color/holo_blue_light"
+                    android:text="@string/update_text" />
 
-        <Button
-            android:id="@+id/checkAgainButton"
-            android:layout_width="wrap_content"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            style="?android:attr/borderlessButtonStyle"
-            android:background="@android:color/holo_orange_light"
-            android:text="@string/check_text" />
+                <Button
+                    android:id="@+id/checkAgainButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@android:color/holo_orange_light"
+                    android:text="@string/check_text" />
 
-    </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </RelativeLayout>
 
 
-</RelativeLayout>
+
+</ScrollView>
