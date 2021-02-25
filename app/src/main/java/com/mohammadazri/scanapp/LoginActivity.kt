@@ -44,7 +44,6 @@ class LoginActivity : AppCompatActivity() {
         } else if (TextUtils.isEmpty(password)) {
             Toast.makeText(applicationContext,"Isi kolom password", Toast.LENGTH_SHORT).show()
         } else {
-
             firebaseAuth?.signInWithEmailAndPassword(email,password)?.addOnCompleteListener(object:
                 OnCompleteListener<AuthResult> {
                 override fun onComplete(task: Task<AuthResult>) {
